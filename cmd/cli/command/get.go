@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 
@@ -46,10 +47,10 @@ func (getComm *GetCommand) Run() error {
 		return fmt.Errorf("missing id: see audiometa --help")
 	}
 	params := "id=" + url.QueryEscape(getComm.id)
-	path := fmt.Sprintf("http://localhost:/get?%s", params)
+	path := fmt.Sprintf("http://localhost:8080/get?%s", params)
 	payload := &bytes.Buffer{}
 	client := getComm.client
-
+	log.Println("In getcommand")
 	req, err := http.NewRequest(http.MethodGet, path, payload)
 	if err != nil {
 		return err
@@ -66,6 +67,9 @@ func (getComm *GetCommand) Run() error {
 		fmt.Printf("error reading response, %s\n", err.Error())
 		return err
 	}
+	log.Println("Waiting response")
+	log.Println(string(b))
+	log.Println(b)
 	fmt.Println(string(b))
 	return nil
 }
