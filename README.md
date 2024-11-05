@@ -12,7 +12,10 @@ storage - интерфейсы для хранения данных в хран�
 
 
 # Usage
-## API:  
+## Prerequisits
+Golang 1.23.2  
+
+## API  
 
 Для запуска API server'a следует выполнить следующую команду:
 ```bash
@@ -23,7 +26,7 @@ go run cmd/api/main.go
 [ 2 ] GET /get/{id} - Получить метаданные по id  
 [ 3 ] POST /upload - Загрузить файл с метаданными  
 
-## CLI:
+## CLI
 
 Entrypoint - cmd/cli/main.go  
 Структура CLI:  
@@ -34,4 +37,5 @@ Entrypoint - cmd/cli/main.go
 [  ] Тесты (mock,unit)
 [  ] Docker
 [  ] Использование Cobra/Viper
+[  ] Github Actions (CI/CD)
 [  ] Улучшение storage
