@@ -23,6 +23,7 @@ func main() {
 	}
 	//log.Printf("Current CMD's in main.go:%+v\n", cmds)
 	parser := command.NewParser(cmds)
+	log.Println()
 	if err := parser.Parse(os.Args[1:]); err != nil {
 		os.Stderr.WriteString(fmt.Sprintf("Error: %s\n", err.Error()))
 		os.Exit(1)

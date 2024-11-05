@@ -9,7 +9,7 @@ import (
 )
 
 func (mdc *MetaDataService) ListHandler(w http.ResponseWriter, r *http.Request) {
-	//TODO
+	log.Println("We are getting ListHandler request")
 	audioList, err := mdc.Storage.List()
 	if err != nil {
 		log.Println(err)
@@ -27,5 +27,5 @@ func (mdc *MetaDataService) ListHandler(w http.ResponseWriter, r *http.Request) 
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprint(w, audioListJSON)
+	fmt.Fprint(w, string(audioListJSON))
 }

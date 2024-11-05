@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 
 	"github.com/MechCarrot/audiometa/internal/interfaces"
@@ -35,17 +36,17 @@ func (lst *ListCommand) Run() error {
 	path := "http://localhost:8080/list"
 	payload := &bytes.Buffer{}
 	client := lst.client
-
 	req, err := http.NewRequest(http.MethodGet, path, payload)
 	if err != nil {
 		return err
 	}
-
+	log.Println("I am here2")
+	log.Println(req)
+	log.Println(req.Body)
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
 	}
-
 	defer resp.Body.Close()
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
